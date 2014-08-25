@@ -31,15 +31,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    //CoreData setup
     ARCAppDelegate *appDelegate =
     [[UIApplication sharedApplication] delegate];
     
     _context = [appDelegate managedObjectContext];
 
-    //Get keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
                                                  name:UIKeyboardDidShowNotification object:nil];
@@ -56,7 +53,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
-    //reset view
     _topLeftCorner = CGRectMake(0,0, 1, 1);
     [self.scrollView scrollRectToVisible: _topLeftCorner animated: YES];
     _painTextOutlet.text = @"";
@@ -68,7 +64,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)textFieldDidBeginEditing:(UITextField *)textField
@@ -79,16 +74,13 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    //NSLog(@"Hello from text field end editing.");
     _activeTextField = nil;
-
 }
 
 -(IBAction)textFieldDoneEditing:(id)sender{
     [sender resignFirstResponder];
 }
 
-// Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
     
@@ -99,8 +91,6 @@
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your app might not need or want this behavior.
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     CGPoint textFieldPoint = _activeTextField.frame.origin;
@@ -113,7 +103,6 @@
      
 }
 
-// Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
@@ -134,7 +123,6 @@
                    insertNewObjectForEntityForName:@"PainEvent"
                    inManagedObjectContext:_context];
 
-    //setting entity attributes
     [_painEvent setValue:  _painNumber forKey:@"number"];
     [_painEvent setValue: _painTextOutlet.text forKey:@"text"];
     [_painEvent setValue:[NSDate date] forKey:@"timeStamp"];
