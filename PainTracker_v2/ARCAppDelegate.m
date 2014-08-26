@@ -7,16 +7,26 @@
 //
 
 #import "ARCAppDelegate.h"
+#import "ARCPainRecordTableViewController.h"
+#import "PainEvent.h"
 
 @implementation ARCAppDelegate
-
+{
+    NSMutableArray * _painEvents;
+}
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
+    _painEvents = [NSMutableArray init];
+
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = [tabBarController viewControllers][1];
+    ARCPainRecordTableViewController *painEventViewController = [navigationController viewControllers][0];
+    painEventViewController.painEvents= _painEvents;
     return YES;
 }
 							

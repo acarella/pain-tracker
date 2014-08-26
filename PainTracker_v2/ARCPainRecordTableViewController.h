@@ -10,6 +10,6 @@
 
 @interface ARCPainRecordTableViewController : UITableViewController
 
-@property (nonatomic,strong)NSArray* fetchedRecordsArray;
+@property (nonatomic,strong)NSMutableArray* painEvents;
 
 @end

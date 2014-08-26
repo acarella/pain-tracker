@@ -17,9 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    ARCAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     
-    self.fetchedRecordsArray = [appDelegate getAllPainRecords];
     [self.tableView reloadData];
 }
 
@@ -31,15 +29,23 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return [self.fetchedRecordsArray count];
+    return [self.painEvents count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellReuseIdentifier = @"PainEventCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellReuseIdentifier forIndexPath:indexPath];
-    PainEvent * record = [self.fetchedRecordsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@, %@ ",record.number,record.text,record.timeStamp];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PainEventCellIdentifier"];
+    
+    PainEvent *painEvent = (self.painEvents)[indexPath.row];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"mm dd 'at' HH:mm"];
+    
+    NSString *timeStampString = [formatter stringFromDate:painEvent.timeStamp];
+    
+    cell.textLabel.text = timeStampString;
+    cell.detailTextLabel.text = [painEvent.number stringValue];
+    
     return cell;
 }
 
