@@ -219,7 +219,7 @@
             </objects>
             <point key="canvasLocation" x="1237" y="-254"/>
         </scene>
-        <!--Root View Controller-->
+        <!--History-->
         <scene sceneID="9Zw-Fy-Ywa">
             <objects>
                 <tableViewController id="o5F-S0-TOD" customClass="ARCPainRecordTableViewController" sceneMemberID="viewController">
@@ -228,7 +228,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="D4f-La-Mdf">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PainEventCellIdentifier" id="D4f-La-Mdf">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D4f-La-Mdf" id="jtV-EC-Sor">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -240,17 +240,17 @@
                             <outlet property="delegate" destination="o5F-S0-TOD" id="bju-qX-Vzb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="06C-Cu-2q4"/>
+                    <navigationItem key="navigationItem" title="History" id="06C-Cu-2q4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h1I-wk-txI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="639"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="o14-lt-vdf">
             <objects>
                 <navigationController id="o4F-eE-vlk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="8Rs-ay-hw8"/>
+                    <tabBarItem key="tabBarItem" title="History" id="8Rs-ay-hw8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cob-Kx-ygM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
